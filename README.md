@@ -4,7 +4,7 @@ After a regenie rare-variant burden analysis on the All of Us Researcher Workben
 
 - the carriers and their genotypes, one column per variant
 - carriers per variant, split by cases and controls
-- a summary row: variants used, number of carriers, and carrier % in cases vs controls
+- a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits the mean phenotype is reported in carriers vs non-carriers) 
 
 ---
 
@@ -149,6 +149,24 @@ Non-coding aggregates are selected the same way as genes. You name the gene, the
 - **Masks:** any non-coding mask defined in your mask file can be added with `selection.masks`.
 - **Frequency:** non-coding aggregates are often tested at a higher frequency bin, so set `max_maf` to match (e.g. `0.01`).
 - **Check first:** run a `dry-run` to confirm what a search selects before extracting. `rna` aggregates are only recognised when their mask name contains "rna".
+
+## Outputs
+
+All in `out_dir`. `PREFIX` = `{run}_{ancestry}_{analysis}_{selection.name}`, and `N` = the aggregate's row (starting at 0) in the aggregates file.
+
+| file | contents |
+|---|---|
+| `input/aggregates_{PREFIX}.csv` | the selected aggregates, one row each: chromosome, position, unit, gene, region, mask, frequency bin, MAC, LOG10P, BETA, aggregate ID |
+| `output/{PREFIX}/extraction_summary_{PREFIX}.tsv` | one row per aggregate: variants annotated → found in the genotypes → kept after the frequency filter; number of carriers; cases/controls analysed, carriers in each and carrier %; status (`OK` or why not) |
+| `output/{PREFIX}/variant_counts_aggregate_N.tsv` | one row per kept variant: the counted (minor) allele, carriers and homozygotes in cases and in controls |
+| `output/{PREFIX}/carriers_aggregate_N.txt` | carriers only, in plink `.raw` layout: `FID IID PAT MAT SEX PHENOTYPE` (2 = case, 1 = control), then one column per variant holding copies of the minor allele (0/1/2/NA) |
+| `output/{PREFIX}/dry_run_{PREFIX}.tsv` | dry-run only: variants annotated and annotation sets used per aggregate |
+| `metadata_{ancestry}/phenotype_file.txt`, `sample_file_no_NA.txt` | the phenotype (binary recoded to 1/2) and the people analysed |
+| `{run}_{ancestry}_{analysis}_aggregates_merged.tsv.gz` | all regenie results for this run, ancestry and analysis, merged |
+
+For continuous traits, the summary shows `n_analysed` and the mean phenotype in carriers vs non-carriers instead of case/control columns. The variant counts show `carriers` and `hom`, and `PHENOTYPE` holds the measured value.
+
+Carrier files are participant-level data, and counts of 1–20 must not leave the Workbench.
 
 ---
 

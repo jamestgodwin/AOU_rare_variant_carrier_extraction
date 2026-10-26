@@ -157,4 +157,3 @@ Non-coding aggregates are selected the same way as genes. You name the gene, the
 - **Data protection:** outputs are participant-level data. Keep them on the Workbench, and never share counts of 1–20 participants outside it (All of Us Data and Statistics Dissemination Policy). `.gitignore` keeps `config.json` and all output files out of this repository.
 - **Caching:** everything is cached under `~/carrier_cache`, which is why repeat searches are fast. Delete it to start fresh.
 - **Logs:** every run is logged in `logs/`, and the last line shows the time per stage.
-- **More detail:** input formats, all settings, how it works, performance and troubleshooting are in [docs/REFERENCE.md](docs/REFERENCE.md).

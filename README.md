@@ -1,17 +1,17 @@
-# Fast rare-variant aggregate carrier extraction (All of Us v9) 
-## James Godwin, Marina Vabistsevits (October 2026, v1)
+# Fast rare-variant aggregate carrier extraction (All of Us v9)
+### James Godwin, Marina Vabistsevits (October 2026, v1)
+
+> *This repository adapts the UK Biobank carrier-extraction pipeline ([UKB_extract_carriers_rare_variant_aggregates](https://github.com/mvab/UKB_extract_carriers_rare_variant_aggregates)) to run on the All of Us Researcher Workbench, and combines its steps into a single, faster command.*
 
 After a regenie rare-variant burden analysis on the All of Us Researcher Workbench, this tool shows **who carries the variants behind an aggregate and what their phenotype is**. For each aggregate it writes:
 
 - the carriers and their genotypes, one column per variant
 - carriers per variant, split by cases and controls
-- a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits the mean phenotype is reported in carriers vs non-carriers)
-
-This repository adapts the UK Biobank carrier-extraction pipeline ([UKB_extract_carriers_rare_variant_aggregates](https://github.com/mvab/UKB_extract_carriers_rare_variant_aggregates)) to run on the All of Us Researcher Workbench, and combines its steps into a single, faster command.
+- a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits, the mean phenotype in carriers vs non-carriers)
 
 ---
 
-## Setup (once)
+## Setup
 
 In a JupyterLab terminal on the Workbench:
 
@@ -173,7 +173,7 @@ Carrier files are participant-level data, and counts of 1–20 must not leave th
 
 ---
 
-## Good to know
+## Tips
 
 - **Data protection:** outputs are participant-level data. Keep them on the Workbench, and never share counts of 1–20 participants outside it (All of Us Data and Statistics Dissemination Policy). `.gitignore` keeps `config.json` and all output files out of this repository.
 - **Caching:** everything is cached under `~/carrier_cache`, which is why repeat searches are fast. Delete it to start fresh.

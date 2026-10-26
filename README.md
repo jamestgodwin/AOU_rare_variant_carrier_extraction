@@ -1,10 +1,13 @@
-# Rare-variant aggregate carrier extraction (All of Us)
+# Fast rare-variant aggregate carrier extraction (All of Us v9) 
+## James Godwin, Marina Vabistsevits (October 2026, v1)
 
 After a regenie rare-variant burden analysis on the All of Us Researcher Workbench, this tool shows **who carries the variants behind an aggregate and what their phenotype is**. For each aggregate it writes:
 
 - the carriers and their genotypes, one column per variant
 - carriers per variant, split by cases and controls
-- a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits the mean phenotype is reported in carriers vs non-carriers) 
+- a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits the mean phenotype is reported in carriers vs non-carriers)
+
+This repository adapts the UK Biobank carrier-extraction pipeline ([UKB_extract_carriers_rare_variant_aggregates](https://github.com/mvab/UKB_extract_carriers_rare_variant_aggregates)) to run on the All of Us Researcher Workbench, and combines its steps into a single, faster command.
 
 ---
 

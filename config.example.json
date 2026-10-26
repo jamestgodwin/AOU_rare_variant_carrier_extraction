@@ -1,0 +1,54 @@
+{
+  "_help": "Copy to config.json and replace every <...> placeholder. Keys starting with _ are comments. See README.md for every setting.",
+
+  "run": "MYTRAIT_v9",
+  "ancestry": "eur",
+  "analysis": "burden",
+
+  "selection": {
+    "_help": "targets: full aggregate IDs (always kept), genes/ENST ids, ENSR ids, or chr:start-end. Empty targets = top hits by log10p_min.",
+    "name": "CHEK2_lof",
+    "targets": ["coding_CHEK2_ENST00000402731.combined_damaging_lof.0.001"],
+    "targets_file": null,
+    "masks": [],
+    "units": [],
+    "log10p_min": null,
+    "max_aggregates": 500
+  },
+
+  "max_maf": 0.001,
+
+  "inputs": {
+    "results_dir": "gs://<your-workspace-bucket>/<path>/regenie_step2_results",
+    "pheno_file": "gs://<your-workspace-bucket>/<path>/pheno_file.tsv",
+    "cov_file": "gs://<your-workspace-bucket>/<path>/covariate_file.tsv",
+    "ancestry_file": "gs://<your-workspace-bucket>/<path>/ancestry_preds.tsv",
+    "pheno_col": null,
+    "anno_file": "gs://<annotation-bucket>/<path>/annotations_all_chr{CHR}.zst",
+    "mask_file": "gs://<annotation-bucket>/<path>/masks_all_chr{CHR}.zst",
+    "geno_prefix": "gs://<genotype-bucket>/<path>/chr{CHR}_<suffix>",
+    "geno_format": "pgen",
+    "bgen_sample": null,
+    "chr_x": "X",
+    "range_units": ["sliding"]
+  },
+
+  "outputs": {
+    "out_dir": "gs://<your-workspace-bucket>/variant_carrier_testing",
+    "cache_dir": "~/carrier_cache"
+  },
+
+  "performance": {
+    "_help": "See README 'Configuration reference'. Defaults are the fastest settings.",
+    "geno_access": "auto",
+    "use_mounts": true,
+    "parallel_chromosomes": 1,
+    "plink2_threads": 0,
+    "plink2_memory_mb": 0,
+    "genotype_cache_gb": 50,
+    "upload_threads": 16
+  },
+
+  "_redo_help": "steps to redo even though their cached output exists: merge, index, samples, genotypes, annotations",
+  "redo": []
+}

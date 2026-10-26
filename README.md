@@ -9,6 +9,8 @@ After a regenie rare-variant burden analysis on the All of Us Researcher Workben
 - carriers per variant, split by cases and controls
 - a summary row: variants used, number of carriers, and carrier % in cases vs controls (for quantitative traits, the mean phenotype in carriers vs non-carriers)
 
+Estimate of time: one gene (CHEK2 on chr22) took 54s to extract case/control counts of all 200 aggregates. 
+
 ---
 
 ## Setup
